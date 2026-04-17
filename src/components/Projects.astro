@@ -1,0 +1,51 @@
+---
+import Arrow from "@lucide/astro/icons/corner-right-up";
+
+type Item = {
+    name: string;
+    description: string;
+    link?: string;
+};
+
+interface Props {
+    title: string;
+    projects: Item[];
+}
+
+const { title, projects } = Astro.props as Props;
+---
+
+<section id={title.toLowerCase()} class="scroll-mt-32">
+    <h2 class="opacity-50 uppercase mb-6">{title}</h2>
+
+    <ul class="space-y-6">
+        {
+            projects.map((project) => (
+                <li class="group">
+                    {project.link ? (
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            name={project.name}
+                            class="mb-2 block font-semibold transition-all duration-200 group-hover:text-primary text-lg"
+                        >
+                            {project.name}
+                            <Arrow class="h-4 w-4 inline transition-all text-primary duration-200 invisible opacity-0 translate-y-1 group-hover:translate-y-0 group-hover:visible group-hover:opacity-100 ml-1" />
+                        </a>
+                    ) : (
+                        <span
+                            class="mb-2 block font-semibold transition-all duration-200 group-hover:text-primary text-lg"
+                        >
+                            {project.name}
+                            <Arrow class="h-4 w-4 inline transition-all text-primary duration-200 invisible opacity-0 translate-y-1 group-hover:translate-y-0 group-hover:visible group-hover:opacity-100 ml-1" />
+                        </span>
+                    )}
+                    <p class="opacity-70 text-sm">
+                        {project.description}
+                    </p>
+                </li>
+            ))
+        }
+    </ul>
+</section>

@@ -1,0 +1,22 @@
+---
+interface Props {
+    name: string;
+    title: string;
+    p1: string;
+    p2: string;
+}
+
+const { name, title, p1, p2 } = Astro.props as Props;
+---
+
+<section id="about" class="mb-10 mt-20 scroll-mt-32">
+    <h1 class="mb-4 font-semibold text-2xl">{name}</h1>
+    <div class="[&_p]:mb-6 leading-7">
+        <p>
+            <span class="text-primary font-bold text-lg">{title} </span>
+            <br/>
+        </p>
+        <p class="opacity-70 text-base">{p1}</p>
+        <p class="opacity-70 text-base">{p2}</p>
+    </div>
+</section>

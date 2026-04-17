@@ -1,0 +1,48 @@
+---
+import ExternalLink from "@lucide/astro/icons/external-link";
+
+interface Content {
+    title: string;
+    category: string;
+    link?: string;
+}
+
+interface Props {
+    heading: string;
+    content: Content[];
+}
+
+const { heading, content } = Astro.props as Props;
+---
+
+<section class="mt-20 scroll-mt-32" id="skills">
+    <h2 class="opacity-50 uppercase mb-6">{heading}</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {
+            content.map((skill) => {
+                const ItemWrapper = skill.link ? 'a' : 'article';
+                return (
+                    <ItemWrapper 
+                        href={skill.link} 
+                        target={skill.link ? "_blank" : undefined}
+                        rel={skill.link ? "noopener noreferrer" : undefined}
+                        class:list={[
+                            "border p-4 rounded-md flex flex-col justify-center items-start transition-all relative group",
+                            skill.link 
+                                ? "border-primary/40 bg-primary/5 hover:border-primary hover:bg-primary/10 hover:-translate-y-1 shadow-sm" 
+                                : "border-border/50 bg-secondary/20"
+                        ]}
+                    >
+                        <div class="flex justify-between items-start w-full gap-2">
+                             <p class="pb-1 text-primary font-medium text-sm">
+                                {skill.title}
+                            </p>
+                            {skill.link && <ExternalLink class="w-3 h-3 text-primary/50 group-hover:text-primary transition-colors" />}
+                        </div>
+                        <span class="text-[0.7rem] bg-background px-2 py-1 rounded opacity-70 uppercase mt-2">{skill.category}</span>
+                    </ItemWrapper>
+                )
+            })
+        }
+    </div>
+</section>

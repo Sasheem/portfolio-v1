@@ -1,0 +1,118 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Experience from "@/src/components/Experience.astro";
+import Hero from "@/src/components/Hero.astro";
+import Projects from "@/src/components/Projects.astro";
+import Footer from "@/src/components/Footer.astro";
+import Skills from "@/src/components/Skills.astro";
+
+const nav = [
+  { path: `#about`, text: "About" },
+  { path: `#experience`, text: "Experience" },
+  { path: `#projects`, text: "Projects" },
+  { path: `#skills`, text: "Skills" },
+  { path: `#contact`, text: "Contact" },
+];
+
+const heroProps = {
+  name: "Sasheem Snell",
+  title: "Full Stack Developer | AI Engineer in Training",
+  p1: "I'm a Full Stack Developer specializing in responsive websites and cross-platform apps, currently transitioning into an AI Engineer role. I enjoy the challenge of taking a technical problem and building a simple, effective solution for it, whether that’s a management bot or a data-tracking tool.",
+  p2: "My recent focus has been at the intersection of AI and cloud infrastructure, where I'm refining my skills by engineering advanced data solutions and interactive projects within the gaming ecosystem.",
+};
+
+const projects = [
+  {
+    name: "Gear Stats Calculator",
+    description: "A comprehensive Web App built to analyze, scale, and compute complex game data formulas and generate insight using custom metrics.",
+    link: "https://github.com/sasheem/gear-stats-calculator", 
+  },
+  {
+    name: "Logistics",
+    description: "An advanced Discord Bot leveraging the Discord Interactions API for user productivity. Currently scaling up for SaaS model distribution.",
+    link: "https://github.com/sasheem/logistics-bot", 
+  },
+  {
+    name: "Tip Tracker",
+    description: "A mobile application designed to track user tips over intervals, featuring interactive UI elements and responsive scaling.",
+    link: "https://github.com/sasheem/tip-tracker", 
+  }
+];
+
+const projectsProps = {
+  title: "Projects",
+  projects,
+};
+
+const experienceData = {
+  title: "Experience",
+  jobs: [
+    {
+      period: "Aug 2021 — Present",
+      role: "Full Stack Web Developer",
+      company: "Florida State University",
+      description: "Manages WordPress multi-site environments by developing custom themes and responsive layouts using the WordPress REST API and ACF. Oversees site migrations to Red Hat Linux servers while maintaining project integrity through disciplined Git version control."
+    },
+    {
+      period: "Sep 2019 — Present",
+      role: "Freelance Web Developer",
+      company: "Sasheem Dev LLC",
+      description: "Builds high-performance, responsive websites for various clients primarily using WordPress. Manages the full development lifecycle, from gathering initial requirements and design to final deployment and ongoing maintenance."
+    }
+  ]
+};
+
+const footerContent = {
+  id: "contact",
+  status: "Open for collaboration & hire",
+  email_url: "mailto:hello@sasheem.dev",
+  github_url: "https://github.com/sasheem",
+  linkedin_url: "https://linkedin.com/in/sasheem",
+};
+
+const skills = [
+  // Languages
+  { title: "JavaScript", category: "Language" },
+  { title: "Python", category: "Language" },
+  { title: "PHP", category: "Language" },
+  { title: "SQL", category: "Language" },
+  
+  // Frameworks & Libraries
+  { title: "React / React Native", category: "Framework" },
+  { title: "Node.js", category: "Runtime" },
+  { title: "Flask", category: "Framework" },
+  { title: "Tailwind CSS", category: "Library" },
+  
+  // Cloud & CMS
+  { title: "AWS", category: "Cloud" },
+  { title: "Google Cloud Platform", category: "Cloud" },
+  { title: "WordPress", category: "CMS" },
+  
+  // Tools & APIs
+  { title: "Git / Version Control", category: "Tool" },
+  { title: "Discord Interactions API", category: "API" },
+  
+  // Certifications
+  { title: "AWS Machine Learning", category: "Certification", link: "https://www.credly.com/badges/3d1f1b15-71c8-45e8-ad2f-2953927c1533/public_url" },
+  { title: "AWS AI Practitioner", category: "Certification", link: "https://www.credly.com/badges/ada2028b-acc6-4b4b-8995-98a751521dae/public_url" },
+  { title: "AWS Cloud Practitioner", category: "Certification", link: "https://www.credly.com/badges/009d1c38-8676-40a6-90e6-f53cfa7c8daf/public_url" }
+];
+
+---
+
+<Layout
+  title="Sasheem Snell - Portfolio"
+  description="Full Stack Web and Mobile Developer focusing on React Native, Cloud logic, and building functional applications."
+>
+  <Header nav={nav} />
+
+  <main class="w-full flex flex-col gap-16 px-4 pb-8 pt-4">
+    <Hero {...heroProps} />
+    <Experience {...experienceData} />
+    <Projects {...projectsProps} />
+    <Skills heading="Technical Arsenal" content={skills} />
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>
