@@ -1,171 +1,61 @@
-# Void - Minimalist Multilingual Portfolio Template
+# Sasheem | Portfolio
 
-A clean, minimalist portfolio template built with Astro and TailwindCSS, featuring full internationalization support using `@ariaskit/astro-i18n`.
+A minimalist, high-performance portfolio built with Astro and Tailwind CSS. This project serves as a professional showcase of my technical arsenal, projects, and career journey.
 
-![Hero](.github/571_1x_shots_so.png)
+## 🚀 Overview
 
-## ✨ Features
+This portfolio is designed to be fast, responsive, and visually polished. It leverages modern web technologies to provide a seamless user experience across all devices.
 
-- **🌍 Multilingual Support** - Built-in i18n with English, Spanish, and Portuguese
-- **⚡ Astro 5** - Fast, modern static site generation
-- **🎨 TailwindCSS 4** - Utility-first styling with dark mode
-- **📱 Responsive Design** - Mobile-first approach
-- **🔍 SEO Optimized** - Sitemap, meta tags
-- **🚀 Zero JS by Default** - Minimal JavaScript for optimal performance
-- **📝 TypeScript** - Full type safety throughout
+### Key Features
+- **🌍 Multilingual Support**: Built-in internationalization (i18n) support for English, Spanish, and Portuguese.
+- **⚡ Performance-First**: Built with Astro 5 for static site generation and minimal client-side JavaScript.
+- **🎨 Modern Aesthetics**: Styled with Tailwind CSS 4, featuring a sleek dark mode and glassmorphism elements.
+- **📱 Fully Responsive**: Optimized for mobile, tablet, and desktop viewing.
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Astro](https://astro.build/)
-- **Styling**: [TailwindCSS](https://tailwindcss.com/)
+- **Framework**: [Astro 5](https://astro.build/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **Icons**: [Lucide](https://lucide.dev/)
 - **Internationalization**: [@ariaskit/astro-i18n](https://github.com/JorgeRosbel/astro-i18n)
-- **Package Manager**: pnpm
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- pnpm (recommended)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/JorgeRosbel/void.git
-cd void
-
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm dev
-```
-
-Your site will be available at `http://localhost:4321`.
-
-### Build & Deploy
-
-```bash
-# Build for production
-pnpm build
-
-# Preview production build
-pnpm preview
-```
-
-## 🌐 Internationalization
-
-This template uses `@ariaskit/astro-i18n` for seamless multilingual support. The i18n system is configured for:
-
-- **English** (`en`) - Default locale
-- **Spanish** (`es`)
-- **Portuguese** (`pt`)
-
-### Adding New Languages
-
-1. Create a new JSON file in `/i18n/` (e.g., `fr.json`)
-2. Copy the structure from `en.json`
-3. Add the new locale to `src/pages/[lang]/index.astro` in the `getStaticPaths` function
-4. Update the i18n library configuration if needed
-
-### Translation Files
-
-All translations are stored in `/i18n/`:
-- `en.json` - English translations
-- `es.json` - Spanish translations  
-- `pt.json` - Portuguese translations
-
-Each file contains the same structure with keys for:
-- Navigation items
-- Hero section content
-- Project descriptions
-- Experience details
-- Contact information
+- **Deployment**: [GitHub Pages](https://pages.github.com/) / [Vercel](https://vercel.com/)
 
 ## 📁 Project Structure
 
-```
-void/
-├── public/              # Static assets
+```text
 ├── src/
-│   ├── assets/         # Images and static files
-│   ├── components/     # Astro components
-│   │   ├── Hero.astro
-│   │   ├── Projects.astro
-│   │   ├── Experience.astro
-│   │   └── ...
-│   ├── layouts/        # Page layouts
-│   ├── pages/          # Route pages
-│   │   ├── index.astro      # Root redirect
-│   │   └── [lang]/          # Localized pages
-│   └── styles/         # Global styles
-├── i18n/               # Translation files
-├── astro.config.mjs    # Astro configuration
-└── package.json        # Dependencies
+│   ├── components/     # Reusable Astro components (Hero, Projects, Experience, etc.)
+│   ├── layouts/        # Page layouts and SEO metadata
+│   ├── pages/          # Localized routes ([lang]/index.astro)
+│   └── styles/         # Global CSS and Tailwind directives
+├── i18n/               # Translation files (en.json, es.json, pt.json)
+├── public/              # Static assets and icons
+└── astro.config.mjs    # Astro configuration
 ```
 
-## 🎨 Customization
+## 🚀 Getting Started
 
-### Personal Information
+To run this project locally:
 
-Edit the translation files in `/i18n/` to update:
-- Personal name and title
-- Project descriptions
-- Experience details
-- Contact information
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### Styling
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
 
-The template uses TailwindCSS with a dark theme. Customize colors and styles in:
-- Global CSS classes in components
-- Tailwind configuration (if needed)
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-### Adding New Sections
+## ✨ Credits
 
-1. Create new components in `/src/components/`
-2. Add translation keys to all i18n files
-3. Import and use components in `/src/pages/[lang]/index.astro`
-
-## 🔧 Configuration
-
-### Site Configuration
-
-Update `astro.config.mjs` to change:
-- Site URL (`site` property)
-- Add/remove integrations
-
-### Package Scripts
-
-- `pnpm dev` - Start development server
-- `pnpm build` - Build for production (includes i18n validation)
-- `pnpm preview` - Preview production build
-
-## 🌍 Deployment
-
-This template works great with:
-
-- **Vercel** - Zero-config deployment
-- **Netlify** - Simple static site hosting
-- **GitHub Pages** - Free static hosting
-- **Cloudflare Pages** - Global CDN
-
-
-## 📝 License
-
-MIT License - feel free to use this template for your projects!
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📚 Learn More
-
-- [Astro Documentation](https://docs.astro.build/)
-- [TailwindCSS Documentation](https://tailwindcss.com/docs)
-- [@ariaskit/astro-i18n Documentation](https://github.com/JorgeRosbel/astro-i18n)
+This portfolio was customized from the **[Void](https://github.com/JorgeRosbel/void)** theme created by **[Jorge Rosbel](https://github.com/JorgeRosbel)**. I highly recommend checking out his work for minimalist and efficient Astro templates.
 
 ---
 
-**Built with ❤️ using Astro and TailwindCSS**
+Built with ❤️ by [Sasheem](https://github.com/Sasheem)
