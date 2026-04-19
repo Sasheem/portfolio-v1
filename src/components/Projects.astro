@@ -25,8 +25,8 @@ const { title, projects } = Astro.props as Props;
                     {project.link ? (
                         <a
                             href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={project.link.startsWith("http") ? "_blank" : "_self"}
+                            rel={project.link.startsWith("http") ? "noopener noreferrer" : ""}
                             name={project.name}
                             class="mb-2 block font-semibold transition-all duration-200 group-hover:text-primary text-lg"
                         >

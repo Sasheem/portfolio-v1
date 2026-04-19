@@ -1,0 +1,97 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Footer from "@/src/components/Footer.astro";
+import ArrowLeft from "@lucide/astro/icons/arrow-left";
+import Github from "@lucide/astro/icons/github";
+
+const nav = [
+  { path: `/#about`, text: "About" },
+  { path: `/#experience`, text: "Experience" },
+  { path: `/#projects`, text: "Projects" },
+  { path: `/#skills`, text: "Skills" },
+  { path: `/#contact`, text: "Contact" },
+];
+
+const footerContent = {
+  id: "contact",
+  status: "Open for collaboration & hire",
+  email_url: "mailto:hello@sasheem.dev",
+  github_url: "https://github.com/sasheem",
+  linkedin_url: "https://linkedin.com/in/sasheem",
+};
+---
+
+<Layout
+  title="Logistics Bot - Project"
+  description="A Discord bot designed to assist with logistics, player management, and roster lookup by integrating Discord with Google Sheets."
+>
+  <Header nav={nav} />
+
+  <main class="w-full flex flex-col gap-12 px-4 pb-16 pt-8">
+    <div class="flex flex-col gap-4">
+      <a href="/#projects" class="flex items-center gap-2 text-sm opacity-50 hover:opacity-100 transition-opacity w-fit">
+        <ArrowLeft class="h-4 w-4" /> Back to Projects
+      </a>
+      <h1 class="text-4xl font-bold">Logistics Bot</h1>
+    </div>
+
+    <section class="flex flex-col gap-8">
+      <p class="opacity-90 leading-relaxed">
+        Logistics-Bot is a Discord bot designed to assist with logistics, player management, and roster lookup by integrating Discord with Google Sheets. It provides quick and easy access to formatted data pulled directly from live spreadsheets, empowering users to find the information they need through slash commands.
+      </p>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Features</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>Google Sheets Integration:</strong> Seamlessly fetches live data from Google Sheets, returning it to users in clearly formatted, easily digestible views.</li>
+          <li><strong>Fuzzy Search:</strong> Implements intelligent string matching to handle player name typos, ensuring users find correct roster information even if they don't type a name exactly right.</li>
+          <li><strong>Caching Mechanism:</strong> Employs an intelligent caching architecture to prevent hitting Google Sheets API rate limits and deliver snappy responses for frequent requests. Includes commands to manually clear the cache.</li>
+          <li><strong>Centralized Logging:</strong> Detailed structured logging across the application for reliable production observability and debugging.</li>
+          <li><strong>Environment Management:</strong> Multi-environment support (Live and Test modes) using localized configuration variables.</li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Commands</h2>
+        <div class="flex flex-col gap-4">
+          <div class="p-4 rounded-lg bg-muted/50 border border-border">
+            <code class="text-primary font-bold">/roster-position [name]</code>
+            <p class="text-sm opacity-80 mt-1">Fetches and displays the specific roster position of a given player.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-muted/50 border border-border">
+            <code class="text-primary font-bold">/roster-bannermen [name]</code>
+            <p class="text-sm opacity-80 mt-1">Retrieves and lists the bannermen attached to a specific player.</p>
+          </div>
+          <div class="p-4 rounded-lg bg-muted/50 border border-border">
+            <code class="text-primary font-bold">/clear-roster-cache</code>
+            <p class="text-sm opacity-80 mt-1">Clears the locally cached roster data, forcing the next command to pull fresh data from the Google Sheet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Tech Stack</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>Python 3:</strong> The core language used for the backend logic.</li>
+          <li><strong>discord-py-interactions:</strong> The framework used for robust Discord integration, particularly for the implementation of modern Next-Gen Slash Commands.</li>
+          <li><strong>gspread & oauth2client:</strong> Used for authenticating and establishing connections with the Google Sheets API to read roster configurations.</li>
+          <li><strong>rapidfuzz:</strong> High-performance string matching library, used to implement fuzzy searches for player names.</li>
+          <li><strong>python-dotenv:</strong> Manages bot tokens and system environment variables securely outside the codebase.</li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Architecture</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>index.py:</strong> Core entry point and event loop initialized for the bot client.</li>
+          <li><strong>/commands/:</strong> Isolated handlers for Discord slash commands.</li>
+          <li><strong>/utils/:</strong> Reusable helper functions including the centralized logger and search utilities.</li>
+          <li><strong>/config/ & /globals/:</strong> Global application state, constants, and shared configurations.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>

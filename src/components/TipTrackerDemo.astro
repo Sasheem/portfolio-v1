@@ -1,0 +1,42 @@
+---
+/**
+ * TipTrackerDemo.astro
+ * A premium CSS-only mobile device frame for showcasing mobile web apps.
+ */
+interface Props {
+  url: string;
+}
+
+const { url } = Astro.props;
+---
+
+<div class="relative mx-auto">
+  <!-- Outer Device Frame -->
+  <div class="relative mx-auto border-zinc-900 dark:border-zinc-800 bg-zinc-900 border-[14px] rounded-[2.5rem] h-[730px] w-[370px] shadow-2xl transition-all duration-500 hover:shadow-primary/20">
+    
+    <!-- Speaker / Notch Area -->
+    <div class="h-[18px] w-[148px] bg-zinc-900 top-0 left-1/2 -translate-x-1/2 rounded-b-[1rem] absolute z-20"></div>
+    
+    <!-- Detail Buttons (Volume/Power) -->
+    <div class="h-[46px] w-[3px] bg-zinc-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+    <div class="h-[46px] w-[3px] bg-zinc-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+    <div class="h-[64px] w-[3px] bg-zinc-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+
+    <!-- Screen / Iframe Container -->
+    <div class="rounded-[2rem] overflow-hidden w-full h-full bg-black flex items-center justify-center relative">
+      <iframe 
+        src={url} 
+        title="Tip Tracker Prototype"
+        class="w-full h-full border-none"
+        allow="accelerometer; camera; geolocation; microphone; midi; payment; usb; vr"
+        allowfullscreen
+      ></iframe>
+      
+      <!-- Overlay to prevent interaction when not focused (optional, but good for UX) -->
+      <div class="absolute inset-0 pointer-events-none border-[1px] border-white/5 rounded-[2rem]"></div>
+    </div>
+  </div>
+  
+  <!-- Subtle Reflection Effect underneath -->
+  <div class="w-[300px] h-[10px] bg-black/20 dark:bg-primary/5 blur-xl mx-auto mt-4 rounded-full"></div>
+</div>

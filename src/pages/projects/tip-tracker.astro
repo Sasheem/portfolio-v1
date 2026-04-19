@@ -1,0 +1,73 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Footer from "@/src/components/Footer.astro";
+import ArrowLeft from "@lucide/astro/icons/arrow-left";
+import Github from "@lucide/astro/icons/github";
+import TipTrackerDemo from "@/src/components/TipTrackerDemo.astro";
+
+const nav = [
+  { path: `/#about`, text: "About" },
+  { path: `/#experience`, text: "Experience" },
+  { path: `/#projects`, text: "Projects" },
+  { path: `/#skills`, text: "Skills" },
+  { path: `/#contact`, text: "Contact" },
+];
+
+const footerContent = {
+  id: "contact",
+  status: "Open for collaboration & hire",
+  email_url: "mailto:hello@sasheem.dev",
+  github_url: "https://github.com/sasheem",
+  linkedin_url: "https://linkedin.com/in/sasheem",
+};
+---
+
+<Layout
+  title="Tip Tracker - Project"
+  description="A mobile application designed to track user tips over intervals, featuring interactive UI elements and responsive scaling."
+>
+  <Header nav={nav} />
+
+  <main class="w-full flex flex-col gap-12 px-4 pb-16 pt-8">
+    <div class="flex flex-col gap-4">
+      <a href="/#projects" class="flex items-center gap-2 text-sm opacity-50 hover:opacity-100 transition-opacity w-fit">
+        <ArrowLeft class="h-4 w-4" /> Back to Projects
+      </a>
+      <h1 class="text-4xl font-bold">Tip Tracker Prototype</h1>
+    </div>
+
+    <section class="flex flex-col gap-8">
+      <TipTrackerDemo url="https://tip-tracker-prototype.netlify.app/" />
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">🚀 Project Overview</h2>
+        <p class="opacity-90 leading-relaxed">
+           A mobile application designed to track user tips over custom intervals, featuring interactive UI elements and responsive scaling. Built with React Native and Expo, this tool seeks to empower service industry professionals with clear financial data visualization.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Key Features</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>Swift Entry:</strong> Minimizes cognitive load during busy shifts with a high-speed data entry flow.</li>
+          <li><strong>Data Visualization:</strong> Leverages dynamic charts to visualize earnings trends over days, weeks, and months.</li>
+          <li><strong>Local Persistence:</strong> Ensures data is securely stored on the device for instant access without an internet connection.</li>
+          <li><strong>Theming:</strong> Native support for both light and dark modes to match system preferences.</li>
+        </ul>
+      </div>
+
+       <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">🛠 Tech Stack</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>React Native & Expo:</strong> Framework for cross-platform mobile development.</li>
+          <li><strong>TypeScript:</strong> For type-safe application logic.</li>
+          <li><strong>Nativewind / Tailwind CSS:</strong> For consistent and responsive styling.</li>
+          <li><strong>Local Storage:</strong> Fast and reliable data persistence.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>

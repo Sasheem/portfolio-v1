@@ -1,0 +1,100 @@
+---
+import Layout from "@/src/layouts/Layout.astro";
+import Header from "@/src/components/Header.astro";
+import Footer from "@/src/components/Footer.astro";
+import ArrowLeft from "@lucide/astro/icons/arrow-left";
+import ExternalLink from "@lucide/astro/icons/external-link";
+
+const nav = [
+  { path: `/#about`, text: "About" },
+  { path: `/#experience`, text: "Experience" },
+  { path: `/#projects`, text: "Projects" },
+  { path: `/#skills`, text: "Skills" },
+  { path: `/#contact`, text: "Contact" },
+];
+
+const footerContent = {
+  id: "contact",
+  status: "Open for collaboration & hire",
+  email_url: "mailto:hello@sasheem.dev",
+  github_url: "https://github.com/sasheem",
+  linkedin_url: "https://linkedin.com/in/sasheem",
+};
+---
+
+<Layout
+  title="Gear Stats Calculator - Project"
+  description="A comprehensive full-stack application designed to aggregate, analyze, and compare in-game equipment and stats."
+>
+  <Header nav={nav} />
+
+  <main class="w-full flex flex-col gap-12 px-4 pb-16 pt-8">
+    <div class="flex flex-col gap-4">
+      <a href="/#projects" class="flex items-center gap-2 text-sm opacity-50 hover:opacity-100 transition-opacity w-fit">
+        <ArrowLeft class="h-4 w-4" /> Back to Projects
+      </a>
+      <h1 class="text-4xl font-bold">Gear Stats Calculator</h1>
+      <a 
+        href="https://gearstatscalculator.com/" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-primary font-semibold hover:underline w-fit"
+      >
+        View Live App <ExternalLink class="h-4 w-4" />
+      </a>
+    </div>
+
+    <section class="flex flex-col gap-8">
+      <div class="space-y-4 text-sm md:text-base opacity-90">
+        <p>
+          <strong>Gear Stats Analysis Engine & Web Tool</strong><br />
+          A comprehensive full-stack application designed to aggregate, analyze, and compare in-game equipment and stats. This repository houses both the automated data pipeline used to extract and score gear modifiers, and the user-facing web interface that visualizes rankings and stat comparisons.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">🚀 Overview</h2>
+        <p class="opacity-90">
+          The Gear Stats Calculator provides deep analytical insight into character equipment optimization ("theorycrafting") by calculating comparative scores based on weighted troop cycle logic and raw statistical multipliers. It features an interactive gear comparison interface, localization, and a robust data processing backend.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">Key Features</h2>
+        <ul class="list-disc list-inside space-y-2 opacity-90">
+          <li><strong>Advanced Scoring Algorithm:</strong> Implements a multi-layered equation that ranks gear and trinkets based on raw, unweighted averages and sophisticated troop-cycle weighting.</li>
+          <li><strong>Dynamic Gear Comparison:</strong> Offers an interactive UI to compare loadouts side-by-side, enforcing accurate stat combinations.</li>
+          <li><strong>Data Engineering & Analysis:</strong> Utilizes Pandas to clean, process, and analyze raw game statistics directly from ingestion APIs and template sheets.</li>
+          <li><strong>OCR Pipeline:</strong> Integrates OpenCV and Tesseract to extract and digitize stats automatically from game imagery.</li>
+          <li><strong>Translation Engine:</strong> Connects with DeepL API to process strings across multiple supported languages.</li>
+          <li><strong>Scalable Architecture:</strong> Centralized logging, structured database models via SQLAlchemy, and global exception handling tuned for production environments.</li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-6">
+        <h2 class="text-xl font-bold opacity-70 uppercase tracking-wider">🛠 Tech Stack</h2>
+        
+        <div class="flex flex-col gap-4">
+          <h3 class="font-bold opacity-80">Backend & Data Processing</h3>
+          <ul class="list-disc list-inside space-y-1 opacity-90 text-sm">
+            <li><strong>Flask:</strong> High-performance Python web framework handling backend routing and API endpoints.</li>
+            <li><strong>Flask-SQLAlchemy & SQLite:</strong> Relational database layer for persisting gear item schemas and properties.</li>
+            <li><strong>Pandas & OpenPyXL:</strong> Used for ingesting, transforming, and analyzing game data templates (CSV/XLSX).</li>
+            <li><strong>OpenCV & PyTesseract:</strong> Applied for image recognition and text scraping directly from game assets.</li>
+            <li><strong>DeepL:</strong> Extracted for dynamic localization tasks.</li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <h3 class="font-bold opacity-80">Frontend</h3>
+          <ul class="list-disc list-inside space-y-1 opacity-90 text-sm">
+            <li><strong>JavaScript & HTML:</strong> Kept as vanilla and lightweight as possible for maximal rendering performance.</li>
+            <li><strong>esbuild:</strong> Extremely fast bundler used to transpile, minify, and map JS assets.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer {...footerContent} />
+</Layout>
