@@ -1,0 +1,70 @@
+---
+import ArrowUp from "@lucide/astro/icons/arrow-up";
+---
+
+<button
+    id="back-to-top"
+    class="fixed bottom-6 right-4 z-50 !w-10 !h-10 !max-w-none flex items-center justify-center rounded-full bg-primary/10 backdrop-blur-md border border-primary/20 text-primary shadow-lg transition-all duration-300 translate-y-20 opacity-0 hover:bg-primary/20 hover:scale-110 active:scale-95"
+    aria-label="Back to top"
+>
+    <ArrowUp class="w-5 h-5" />
+</button>
+
+<script>
+    const backToTopBtn = document.getElementById('back-to-top');
+    const skillsSection = document.getElementById('skills');
+    
+    if (backToTopBtn) {
+        let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+        let isOverSkills = false;
+
+        const showButton = () => {
+            backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            backToTopBtn.classList.add('translate-y-0', 'opacity-100');
+        };
+
+        const hideButton = () => {
+            backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+            backToTopBtn.classList.remove('translate-y-0', 'opacity-100');
+        };
+
+        const startHideTimer = () => {
+            if (hideTimeout) clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+                if (isOverSkills) {
+                    hideButton();
+                }
+            }, 2500); // 2.5 seconds of inactivity
+        };
+
+        // Observe Skills section to trigger special behavior
+        if (skillsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                isOverSkills = entries[0].isIntersecting;
+                if (isOverSkills) {
+                    startHideTimer();
+                }
+            }, { threshold: 0.1 });
+            observer.observe(skillsSection);
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                showButton();
+                if (isOverSkills) {
+                    startHideTimer();
+                }
+            } else {
+                hideButton();
+                if (hideTimeout) clearTimeout(hideTimeout);
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+</script>

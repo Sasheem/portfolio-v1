@@ -8,7 +8,6 @@ import Footer from "@/src/components/Footer.astro";
 import Skills from "@/src/components/Skills.astro";
 
 const nav = [
-  { path: `#about`, text: "About" },
   { path: `#projects`, text: "Projects" },
   { path: `#experience`, text: "Experience" },
   { path: `#skills`, text: "Skills" },
@@ -111,7 +110,7 @@ const skills = [
     <Hero {...heroProps} />
     <Projects {...projectsProps} />
     <Experience {...experienceData} />
-    <Skills heading="Technical Arsenal" content={skills} />
+    <Skills heading="Skills" content={skills} />
   </main>
 
   <Footer {...footerContent} />
