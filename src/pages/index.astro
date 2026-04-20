@@ -9,8 +9,8 @@ import Skills from "@/src/components/Skills.astro";
 
 const nav = [
   { path: `#about`, text: "About" },
-  { path: `#experience`, text: "Experience" },
   { path: `#projects`, text: "Projects" },
+  { path: `#experience`, text: "Experience" },
   { path: `#skills`, text: "Skills" },
   { path: `#contact`, text: "Contact" },
 ];
@@ -107,10 +107,10 @@ const skills = [
 >
   <Header nav={nav} />
 
-  <main class="w-full flex flex-col gap-16 px-4 pb-8 pt-4">
+  <main class="w-full flex flex-col gap-24 px-4 pb-8 pt-4">
     <Hero {...heroProps} />
-    <Experience {...experienceData} />
     <Projects {...projectsProps} />
+    <Experience {...experienceData} />
     <Skills heading="Technical Arsenal" content={skills} />
   </main>
 
