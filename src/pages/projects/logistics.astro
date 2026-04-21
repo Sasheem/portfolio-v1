@@ -58,14 +58,14 @@ const footerContent = {
             <code class="text-primary font-bold">/roster-position [name]</code>
             <p class="text-sm opacity-80 mt-1">Fetches and displays the specific roster position of a given player.</p>
             <div class="mt-4 rounded-md overflow-hidden border border-border">
-              <video src="/videos/roster_position.mp4" autoplay loop muted playsinline class="w-full object-cover"></video>
+              <video src="/videos/roster_position.mp4" loop muted playsinline class="js-scroll-video w-full object-cover"></video>
             </div>
           </div>
           <div class="p-4 rounded-lg bg-muted/50 border border-border">
             <code class="text-primary font-bold">/roster-bannermen [name]</code>
             <p class="text-sm opacity-80 mt-1">Retrieves and lists the bannermen attached to a specific player.</p>
             <div class="mt-4 rounded-md overflow-hidden border border-border">
-              <video src="/videos/roster_bannermen.mp4" autoplay loop muted playsinline class="w-full object-cover"></video>
+              <video src="/videos/roster_bannermen.mp4" loop muted playsinline class="js-scroll-video w-full object-cover"></video>
             </div>
           </div>
           <div class="p-4 rounded-lg bg-muted/50 border border-border">
@@ -100,3 +100,30 @@ const footerContent = {
 
   <Footer {...footerContent} />
 </Layout>
+
+<script>
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Play when 50% of the video is visible
+  };
+
+  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach(entry => {
+      const video = entry.target as HTMLVideoElement;
+      if (entry.isIntersecting) {
+        video.play().catch(error => {
+          console.warn("Video play failed:", error);
+        });
+      } else {
+        video.pause();
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(handleIntersection, observerOptions);
+  
+  // Select all videos with the specific class
+  const videos = document.querySelectorAll('.js-scroll-video');
+  videos.forEach(video => observer.observe(video));
+</script>
